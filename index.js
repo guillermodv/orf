@@ -2,18 +2,6 @@
 import { mkdir, readdir } from 'fs';
 import { join } from 'node:path';
 
-
-// async function readThisFile(filePath) {
-//     try {
-//       const data = await readFile(filePath);
-//       console.log(data.toString());
-//     } catch (error) {
-//       console.error(`Got an error trying to read the file: ${error.message}`);
-//    }
-//   }
-
-
-
 const deepReadDir = async (dirPath) => await Promise.all(
   (await readdir(dirPath, {withFileTypes: true})).map(async (dirent) => {
     const path = join(dirPath, dirent.name)
@@ -21,23 +9,7 @@ const deepReadDir = async (dirPath) => await Promise.all(
   }),
 )
 
-async function readDirectory(filePath) {
-   await readdir(filePath, function (err, files) {
-        //handling error
-        if (err) {
-            return console.error('Unable to scan directory: ' + err);
-        } 
-        //listing all files using forEach
-        // files.forEach( file => {
-        //     // Do whatever you want to do with the file
-        //     console.log(file); 
-        // });
-});
-return files;
-}
-
 console.log("start")
-
 let directories = ['pdf', 'mp3', 'img', 'iso', 'cbr']
 
 directories.map( directoryName => {
@@ -47,5 +19,13 @@ directories.map( directoryName => {
     }
 )
 
-console.log("tuki tuki", deepReadDir('.'));
+await readdir('.', function (err, files) {
+  if (err) {
+      return console.error('Unable to scan directory: ' + err);
+  } 
+  files.forEach( file => {
+      console.log(file); 
+  });
+});
+
 console.log("finish")

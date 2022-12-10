@@ -1,0 +1,19 @@
+{
+  "name": "ord",
+  "version": "1.0.0",
+  "description": "a simple file order for directories",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "order",
+    "directories"
+  ],
+  "author": "gdv",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
